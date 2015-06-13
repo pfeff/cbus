@@ -1,18 +1,14 @@
-<p id="notice"><%= notice %></p>
-
-<h1>Listing Posts</h1>
-
-<table>
-
-  <tbody>
+<ol>
     <% @posts.each do |post| %>
-      <tr>
-        <td><%= link_to post.title, post %></td>
-      </tr>
+        <div class="comment">
+            <div class="comment-content">
+                <%= link_to post.title, post %>
+                <p><%= post.title %></p>
+            </div>
+            <p class="comment-detail">
+                <%= post.url %>
+            </p>
+        </div>
     <% end %>
-  </tbody>
-</table>
+</ol>
 
-<br>
-
-<%= link_to 'New Post', new_post_path %>
