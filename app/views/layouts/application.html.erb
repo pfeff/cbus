@@ -1,18 +1,35 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Cbus</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+    <head>
+        <title>Cbus</title>
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+        <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+        <%= csrf_meta_tags %>
+    </head>
+    <body>
+        <script src="https://cdn.auth0.com/js/lock-7.1.min.js"></script>
+        <script type="text/javascript">
+
+        var lock = new Auth0Lock('ccTVQCHKxUJRTc97wjgJtQOccbHSFAHf', 'nightfire.auth0.com');
+
+
+        function signin() {
+            lock.show({
+                    callbackURL: 'http://localhost:3000/auth/auth0/callback'
+                    , responseType: 'code'
+                    , authParams: {
+                        scope: 'openid profile'
+                    }
+            });
+        }
+    </script>
+    <button onclick="signin()">Login</button>
 
     <% flash.each do |name, msg| %>
         <%= content_tag :div, msg, class: "flash-#{name}" %>
     <% end -%>
 
-<%= yield %>
+    <%= yield %>
 
 </body>
 </html>
