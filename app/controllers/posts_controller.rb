@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+    before_action :set_user
   before_action :set_post, only: [:show, :edit, :update, :destroy]
 
   # GET /posts
@@ -70,5 +71,9 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:title, :url, :summary)
+    end
+
+    def set_user
+        @user = current_user
     end
 end
