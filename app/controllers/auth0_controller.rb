@@ -16,6 +16,7 @@ class Auth0Controller < ApplicationController
 
         user = User.find_or_create_by(uid: auth_info['uid'])
         user.update(user_params)
+        current_user = user
 
         # Redirect to the URL you want after successfull auth
         redirect_to user
