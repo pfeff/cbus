@@ -3,7 +3,6 @@ class Auth0Controller < ApplicationController
         # This stores all the user information that came from Auth0
         # and the IdP
         auth_info = request.env['omniauth.auth']
-        pp auth_info
         user_params = { provider: auth_info['provider'], uid: auth_info['uid'], google_account_attributes: {
             name: auth_info['info']['name'],
             email: auth_info['info']['email'],
@@ -16,7 +15,7 @@ class Auth0Controller < ApplicationController
 
         user = User.find_or_create_by(uid: auth_info['uid'])
         user.update(user_params)
-        current_user = user
+        set_current_user user
 
         # Redirect to the URL you want after successfull auth
         redirect_to user
