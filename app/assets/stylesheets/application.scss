@@ -18,3 +18,9 @@
 @import "refills/comment";
 @import "refills/flashes";
 @import "refills/navigation";
+
+.wrapper {
+    @include outer-container(100%);
+    @import "posts";
+}
+

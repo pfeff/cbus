@@ -1,14 +1,10 @@
-<ol>
-    <% @posts.each do |post| %>
-        <div class="comment">
-            <div class="comment-content">
-                <%= link_to post.title, post %>
-                <p><%= post.title %></p>
-            </div>
-            <p class="comment-detail">
-                <%= post.url %>
-            </p>
-        </div>
-    <% end %>
-</ol>
-
+<div class="posts">
+    <ol>
+        <% @posts.each do |post| %>
+            <li>
+                <div><%= link_to post.title, post %></div>
+                <small><%= post.url %></small>
+            </li>
+        <% end %>
+    </ol>
+</div>
