@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20150613180853) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "google_accounts", ["user_id"], name: "index_google_accounts_on_user_id"
+  add_index "google_accounts", ["user_id"], name: "index_google_accounts_on_user_id", using: :btree
 
   create_table "posts", force: :cascade do |t|
     t.string   "url"
@@ -43,4 +43,5 @@ ActiveRecord::Schema.define(version: 20150613180853) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "google_accounts", "users"
 end

@@ -6,7 +6,7 @@ var lock = new Auth0Lock('ccTVQCHKxUJRTc97wjgJtQOccbHSFAHf', 'nightfire.auth0.co
 
 function signin() {
     lock.show({
-            callbackURL: 'http://localhost:3000/auth/auth0/callback'
+            callbackURL: '<%= AUTH0_CALLBACK_URL %>'
             , responseType: 'code'
             , authParams: {
                 scope: 'openid profile'
