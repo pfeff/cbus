@@ -22,5 +22,9 @@
 .wrapper {
     @include outer-container(100%);
     @import "posts";
+    .sidebar {
+        @include span-columns(2);
+        @include omega();
+    }
 }
 
